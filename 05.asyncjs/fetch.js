@@ -6,6 +6,8 @@
 // if you simply run it - it prints FAILED TO LOAD error in the console
 // the reason - SAME ORIGIN POLICY IN JS that prevents making AJAX request to domain different than our own
 // CROSS ORIGIN RESOURCE sharing was developed to over come it. CORS must be implemented to consume third party APIs 
+const response = window.alert("Do something");
+console.log(`Response: ${response}`);
 
 function getWeather(country) {
     // process the JSON response 
