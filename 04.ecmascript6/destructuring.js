@@ -33,6 +33,25 @@ function calcRetireAge(year) {
 const [age, retirement] = calcRetireAge(1996);
 console.log(age, retirement);
 
+// REST with array destructuring
+const [name, age=25, ...restValues] = ["Om", 25, "Developer", "M", {name: "Om", age: 25}];
+// NOTE: REST can also process OBJECTS 
+// op: Om 25 [ 'Developer', 'M', { name: 'Om', age: 25 } ]
+console.log(name, age, restValues);
+
+// Destructuring with objects
+const students = [{ name: 'Om', age: 25 }, { name: 'Hari', age: 25 }];
+// const doubleName = student => {
+//     const {name} = student;
+//     return name + name;
+// };
+const doubleName = ({name, age}) => {
+    return name + age;
+}
+// op: ['Om25', 'Hari25']
+console.log(students.map(doubleName));
+
+
 
 
 ////////////////////////////////////
