@@ -18,14 +18,14 @@ const getAllCountries = () => {
         // console.log(JSON.stringify(countries));
 
         // converting JSON resposne to JS objects
-        const jsObjs = xhr.response;
-        jsObjs.forEach(country => {
-            // countries with population < 10Cr
-            if (country["population"] < 10000000) {
-                console.log(country);
-            }
-        });
-
+        const countryObjs = xhr.response;
+        // population < 10Cr and store result as array of { name: "name", population: 1234 } 
+        const result = countryObjs.filter(country => country.population >= 10_00_00_000)
+            .map(country => ({
+                name: country.name,
+                population: country.population
+            }));
+        console.log(result);
     }
 }
 

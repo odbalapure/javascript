@@ -94,4 +94,12 @@ var highestScore = Math.max(...allScores);
 console.log("The topper is: " + students.filter(student => student.score === highestScore)[0].name);
 
 
+// reduce method
+let numbers = [1, 2, 3, 4, 5, 6];
 
+// acc - accumalator
+// value - current value
+let addNum = (value, acc) => acc + value;
+// 0 - start from 0th index of an array
+let res = numbers.reduce(addNum, 0);
+console.log(`Reduce result: ${res}`);
