@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promises</title>
+    <script>
+      // Combining promises (then/catch syntax)
+      const countriesData = fetch("https://restcountries.eu/rest/v2/all")
+        .then((data) => data.json())
+        .then((countries) =>
+          countries
+            .filter((country) => country.population > 200000000)
+            .map((country) => country.name)
+        )
+        .then((countries) => console.log(countries))
+        .catch((err) => console.log(err));
+
+      const countriesInEurope = fetch(
+        "https://restcountries.eu/rest/v2/region/europe"
+      ).then((data) => data.json());
+
+      const countriesSpeakSpanish = fetch(
+        "https://restcountries.eu/rest/v2/lang/es"
+      ).then((data) => data.json());
+
+      // Combining all the promises
+      // Promise.all() will wait for both the promises to complete
+      // NOTE: This returns a PROMISE as well
+      const result = [];
+      const combinedData = Promise.all([
+        countriesInEurope,
+        countriesSpeakSpanish,
+      ]).then((countries) => {
+        const [europeCountries, spanishCountries] = countries;
+
+        spanishCountries.forEach((country) => {
+          if (country.languages[0].name === "Spanish") {
+            result.push(country.name);
+          }
+        });
+      });
+
+      console.log("Countries speaking Spanish:", res);
+
+      // Combining promises (async/await syntax)
+      async function getCountries() {
+        const countries = await fetch("https://restcountries.eu/rest/v2/all");
+        try {
+          const [europeCountries, spanishCountries] = await Promise.all([
+            fetch("https://restcountries.eu/rest/v2/region/europe").then(
+              (data) => data.json()
+            ),
+
+            fetch("https://restcountries.eu/rest/v2/lang/es").then((data) =>
+              data.json()
+            ),
+          ]);
+
+          console.log("Euro Countries: ", europeCountries);
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Combining Promises</h1>
+  </body>
+</html>
