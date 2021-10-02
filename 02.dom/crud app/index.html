@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crud App</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script src="app.js"></script>
+    <style>
+      body {
+        background: rgb(34, 193, 195);
+        background: linear-gradient(
+          0deg,
+          rgba(34, 193, 195, 1) 0%,
+          rgba(253, 187, 45, 1) 100%
+        );
+      }
+
+      .user-list {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        align-self: center;
+        justify-content: space-evenly;
+        
+        height: 100vh;
+        width: 50rem;
+        margin: 2rem auto;
+      }
+
+      .user {
+        height: 5rem;
+        width: 25rem;
+        border-radius: 1rem;
+        background-color: azure;
+        box-sizing: border-box;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        align-content: center;
+        transition: all 1s;
+      }
+
+      .user img {
+        border-radius: 360rem;
+        height: 4rem;
+      }
+
+      .user p {
+        font-weight: 700;
+      }
+
+      .user:hover {
+        transform: scale(1.08, 1.08);
+      }
+
+      .user-input input {
+        height: 2.7rem;
+        border-style: none;
+        border-radius: 1rem;
+        padding: 1rem;
+      }
+
+      .functions {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        align-self: center;
+        margin-bottom: 2rem;
+        margin: 1rem auto;
+      }
+
+      .btn-wrapper {
+        margin-top: 1rem;
+      }
+
+      .line-2 {
+        width: 40rem;
+        margin: 0.1rem auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1 class="display-4">Vanilla JS CRUD App</h1>
+        <hr class="my-4" />
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Recipient's username"
+            aria-label="Recipient's username"
+            aria-describedby="button-addon2"
+            id="searchUser"
+          />
+          <button
+            type="button"
+            class="btn btn-primary"
+            onclick="getUser()"
+          >
+            Get a User
+          </button>
+        </div>
+      </div>
+      <div class="functions">
+        <span class="user-input">
+          <input type="text" id="username" placeholder="Enter name" />
+          <input type="text" id="image" placeholder="Enter image URL" />
+        </span>
+        <div class="btn-wrapper">
+          <button type="button" class="btn btn-success" onclick="createHandler()">
+            Add a User
+          </button>
+          <button type="button" class="btn btn-secondary" onclick="editHandler()">
+            Edit User
+          </button>
+          <button type="button" class="btn btn-primary" onclick="clearHandler()">
+            Clear Inputs
+          </button>
+        </div>
+      </div>
+      <hr class="line-2" />
+      <div class="user-list"></div>
+    </div>
+  </body>
+</html>
