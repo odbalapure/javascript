@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Position</title>
+    <link rel="stylesheet" href="index.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div id="result">
+      <table id="table">
+        <thead>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Email</th>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <button id="prev" onclick="changePage('prev')">Previous</button>
+    <input type="text" id="search" oninput="changePage('jump')" />
+
+    <button id="next" onclick="changePage('next')">Next</button>
+  </body>
+</html>
