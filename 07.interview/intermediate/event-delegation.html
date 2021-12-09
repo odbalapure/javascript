@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Delegation</title>
+</head>
+<body>
+  <div>
+    <h1>Example 1</h1>
+    <ul id="categories">
+      <li id="laptops">Laptops</li>
+      <li id="tvs">TVs</li>
+      <li id="mobiles">Mobiles</li>
+    </ul>
+    <hr>
+    <h1>Example 2</h1>
+    <div id="form" data-uppercase>
+      <!-- data-* or dataset is a readonly property -->
+      <input placeholder="Enter name" type="text" id="name" />
+      <input placeholder="Enter mobile" type="text" id="mobile" />
+      <input placeholder="Enter email" type="text" id="email" />
+    </div>
+  </div>
+  <script defer>
+    /* 
+    Event delegation relies on event bubbling 
+    Suppose we have a ecommerce site where we have categroies on which event listeners are added
+      for eg: Laptop, mobiles and tvs etc. 
+    Instead of adding event listeners to all these sections we can wrap all of them and add one event listner
+      to all such categories
+    Event delegation states that -- instead of attaching event listeners to every element in an HTML page, rather attach 
+      an event handler to that HTML's parent element. For eg: Adding a click listner to "categories" instead of 
+      laptop, mobiles and tvs section (li). As the event will bubble up to its parent (categories) and event handler attached to the parent 
+      will be triggered. 
+    */
+
+    // Attach event handler to categories
+    document.querySelector("#categories").addEventListener("click", (event) => {
+      console.log(event.target.id);
+
+      // Redirect only if clicked on an LI element
+      if (e.target.tagName === "LI") {
+        // This will append a category to the existing URL
+        window.location.href = "/" + e.target.id;
+      }
+    });
+
+    document.querySelector("#form").addEventListener("keyup", (event) => {
+      // target
+      //  dataset: DOMStringMap
+      //  uppercase: ""
+      if (event.target.dataset != undefined) {
+        let name = event.target.value.toUpperCase();
+        console.log("Name:", name);
+      }
+    });
+
+    /* 
+    ADVANTAGES:
+    - Saves memory (less event handlers)
+    - Mitigates performance bottleneck
+    - Less code
+    - DOM Manipulation (We can add elements dynamically and not worry about 
+        attaching an event handler to each one of them)
+
+    DISADVANTAGES:
+    - All events are not bubbled up - blur, focus, scrolling etc.
+    */
+
+  </script>
+</body>
+</html>

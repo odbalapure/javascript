@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Throttling</title>
+</head>
+<body>
+  <h1>Throttling</h1>
+  <button onclick="betterExperience()">Throttling</button>
+  <script>
+    /* 
+    Throttling is used for performance optimization or rate limiting (function calls)
+    Eg: A user submits details after filling up the form, so on every SUBMIT click a POST request will be made
+      so wasteful API calls are made and it results in data duplication
+    */
+    const expensive = () => {
+      console.log("Expensive operation!");
+    }
+
+    const throttle = (fn, limit) => {
+      let flag = true;
+      return function () {
+        let context = this, args = arguments;
+        if (flag) {
+          // fn();
+          // In case expensive() takes some arguments
+          fn.apply(context, args);
+          flag = false;
+          setTimeout(() => {
+            flag = true;
+          }, limit);
+        }
+      }
+    }
+
+    const betterExperience = throttle(expensive, 4000);
+  </script>
+</body>
+</html>

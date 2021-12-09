@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debouncing</title>
+</head>
+<body>
+  <h3>Normal Search Bar</h3>
+  <input type="text" placeholder="Enter a keyword" onkeyup="getData()">
+  <h3>Optimized Search Bar</h3>
+  <input type="text" placeholder="Enter a keyword" onkeyup="getDataBetter()">
+  <script>
+    // Suppose getData is making an API call
+    // This function will be called on every keystroke 
+    // Instead it should be invoked when we pause while typing
+    const getData = () => {
+      console.log("Fetching data...");
+    }
+
+    const debounce = function (fn, delay) {
+      let timer;
+      return function() {
+        let context = this, args = arguments;
+
+        // Clear timeout on a newer function call as lot of copies of
+        //    the timer will be created
+        clearTimeout(timer);
+
+        timer = setTimeout(() => {
+          fn.apply(context, args);
+          // fn();
+        }, delay); 
+      }
+    }
+
+    // Call getData if there is a pause of 600ms
+    const getDataBetter = debounce(getData, 600);
+
+    // NOTE: We can use debouncing on resize window or scroll event
+  </script>
+</body>
+</html>

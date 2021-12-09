@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evnent Bubbling/Trickling</title>
+  <style>
+    div {
+      min-width: 100px;
+      min-height: 100px;
+      padding: 30px;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <div id="grandparent">
+    <div id="parent">
+      <div id="child">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelector("#grandparent").addEventListener("click", () => {
+      console.log("Grand parent clicked!");
+    }, false);
+
+    document.querySelector("#parent").addEventListener("click", () => {
+      console.log("Parent clicked!");
+    }, false);
+
+    document.querySelector("#child").addEventListener("keyup", (event) => {
+      console.log("Child clicked!");
+      // Stops event bubbling/trickling
+      // In case of trickling the event wont reach from grandparent -> child
+      // In case of bubbling the event wont reach from child -> parent/grandparent
+      event.stopPropagation();
+    }, false);
+
+    /* NOTE: Using true will cause event trickling, for false it will cause bubbling
+      By default the value is set to false */
+  </script>
+</body>
+</html>

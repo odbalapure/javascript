@@ -1,5 +1,5 @@
 ////////////////////////////////////
-// CLASSES
+// class
 
 // ES5 
 var Person5 = function(name, yob, job) {
@@ -44,7 +44,7 @@ Person6.hello();
 
 
 ////////////////////////////////////
-// SUB CLASSING
+// SUB classING
 
 // ES5 
 var Employee5 = function(name, yob, job, company, exp) {

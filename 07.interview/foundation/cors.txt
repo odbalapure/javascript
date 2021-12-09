@@ -1,0 +1,28 @@
+==========
+CORS
+==========
+
+Cross-origin resource sharing (CORS) is a mechanism that allows restricted resources on a web page 
+    to be requested from another domain outside the domain from which the first resource was served
+
+                                            OR 
+
+“CORS” stands for Cross-Origin Resource Sharing. It allows you to make requests from one website 
+  to another website in the browser, which is normally prohibited by another browser policy called the Same-Origin Policy (SOP).
+
+If we can control the backend we can set up cors in such a way that we can setup the who can 
+    make request to our backend to fetch resources
+
+CORS defines a way in which a browser and server can interact to determine whether it is safe to allow the cross-origin request.
+
+Install cors: 
+npm i cors
+
+Now we can use it: 
+app.use(cors({
+  origin: "http://localhost:3000",
+  methods: ["GET", "POST"],
+  credentials: true
+}));
+
+Setting credentials: true means allowing cookies

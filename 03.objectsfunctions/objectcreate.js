@@ -34,7 +34,7 @@ console.log(hari.name);
 
 
 ///////////////////////////////////////
-// FIRST CLASS FUNCTIONS
+// FIRST class FUNCTIONS
 
 /*
 var years = [1990, 2021, 1821, 1210];
