@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Callback functions</title>
+  </head>
+  <body>
+    <h1>Function Callback</h1>
+    <button id="clickMe">Click Me!</button>
+
+    <script>
+      /* What is a callback function */
+      // Functions are first class citizens and we can pass a function to another function
+      //    the passed function is nothing but a callback function.
+
+      /////////////////////////////////////////
+      // CLOSURES + EVENT LISTENER
+      function clickHandler() {
+        let count = 0;
+        document.getElementById("clickMe").addEventListener("click", function() {
+          console.log(++count);
+        });
+      }
+
+      clickHandler();
+
+      /////////////////////////////////////////
+      // REMOVE EVENT HANDLERS
+      /* Event listeners are heavy, it forms a closure and even when the call stack is empty
+        but still the callback function does free up "count" variable, as the user can click on button anytime.
+        Hence event listeners should be removed when not in use. When there are lot of listeners it is better
+        to remove them for optimization. */
+      document.getElementById("clickMe").removeEventListener("click", function() {
+        console.log(++count)
+      });
+  </script>
+  </body>
+</html>
