@@ -26,7 +26,7 @@
   <script defer>
     /* 
     Event delegation relies on event bubbling 
-    Suppose we have a ecommerce site where we have categroies on which event listeners are added
+    Suppose we have a ecommerce site where we have categories on which event listeners are added
       for eg: Laptop, mobiles and tvs etc. 
     Instead of adding event listeners to all these sections we can wrap all of them and add one event listner
       to all such categories
@@ -41,9 +41,9 @@
       console.log(event.target.id);
 
       // Redirect only if clicked on an LI element
-      if (e.target.tagName === "LI") {
+      if (event.target.tagName === "LI") {
         // This will append a category to the existing URL
-        window.location.href = "/" + e.target.id;
+        // window.location.href = "/" + event.target.id;
       }
     });
 

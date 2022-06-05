@@ -12,11 +12,13 @@ function displayUser(state, country, method) {
 // Store it inside prototype
 Function.prototype.myapply = function () {
   // NOTE: "arguments" is a reserved keyword in JS
-  // "fn" is a property we are creating on arguments
+  // "applyFunction" is a property we are creating on arguments
   //    we can name it whatever we want to store the "this" (displayUser in this case)
+
   /* Get value of "this" */
   arguments[0].applyFunction = this;
   /* Get the parameters */
+  // NOTE: arguments[0] is user and arguments[1] is the parameters array
   arguments[0].applyFunction(...arguments[1]);
 };
 
